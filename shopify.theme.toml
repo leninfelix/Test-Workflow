@@ -1,0 +1,5 @@
+[environments.dev]
+theme = "168017690906"
+store = "lenin-felix-test"
+password  = "shptka_d56871966f3bffd5ef2fbe232a4bb67f"
+theme-editor-sync = true
