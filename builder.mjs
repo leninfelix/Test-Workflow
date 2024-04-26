@@ -77,26 +77,28 @@ build(bundleConfig)
     console.log(error)
   })
 
-// Observador listo
-watcher.on('ready', () => {
-  console.log(ac.magenta.bold(`Observando cambios en: ${ac.white(srcPath)}`))
-})
+if (!onProduction) {  
+  // Observador listo
+  watcher.on('ready', () => {
+    console.log(ac.magenta.bold(`Observando cambios en: ${ac.white(srcPath)}`))
+  })
 
-// Observar los cambios de los archivos y folders
-watcher
-  .on('add', updateBuilder)
-  .on('addDir', updateBuilder)
-  .on('unlink', updateBuilder)
-  .on('unlinkDir', updateBuilder)
-  .on('change', async (path) => {
-    console.log(ac.white.bold('==============================================================='))
-    console.log(ac.cyan.bold(`*   Archivo Modificado: ${ac.white(path)}`))
-    
-    bundle.rebuild()
-      .then(() => {
-        console.log(ac.green.bold(`*   Bundle regenerado`))
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  });
+  // Observar los cambios de los archivos y folders
+  watcher
+    .on('add', updateBuilder)
+    .on('addDir', updateBuilder)
+    .on('unlink', updateBuilder)
+    .on('unlinkDir', updateBuilder)
+    .on('change', async (path) => {
+      console.log(ac.white.bold('==============================================================='))
+      console.log(ac.cyan.bold(`*   Archivo Modificado: ${ac.white(path)}`))
+      
+      bundle.rebuild()
+        .then(() => {
+          console.log(ac.green.bold(`*   Bundle regenerado`))
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    });
+}

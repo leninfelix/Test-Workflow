@@ -4,13 +4,12 @@
   "description": "",
   "main": "builder.mjs",
   "scripts": {
-    "pre-commit": "lint-staged",
-    "dev": "nodemon",
-    "build": "NODE_ENV=production node watch.js",
+    "monitor": "nodemon",
+    "build": "NODE_ENV=production node builder.js",
     "pull": "shopify theme pull -e dev",
     "push": "shopify theme push -e dev",
     "watch": "shopify theme dev -e dev",
-    "start": "run-p watch dev",
+    "dev": "run-p watch monitor",
     "deploy": "run-p watch build"
   },
   "keywords": [],
