@@ -1,0 +1,140 @@
+/* zrc/styles/components/float-sidebar/index.css */
+.float-sidebar-button-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+.float-sidebar-button {
+  width: 100%;
+  cursor: pointer;
+}
+.float-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000000000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.float-sidebar-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.float-sidebar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  width: calc(100% - 35px);
+  max-width: 340px;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+.float-sidebar-container-int {
+  position: relative;
+  width: 100%;
+}
+.float-sidebar-content {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.float-sidebar-icon-close-wrapper {
+  position: absolute;
+  top: 5px;
+  right: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: -3px -3px 10px 0 rgba(255, 255, 255, 0.2), 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.float-sidebar-icon-close {
+  --size: 12px;
+  display: flex;
+  width: var(--size);
+  height: var(--size);
+  background:
+    linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) calc(50% - 1px),
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0) calc(50% + 1px),
+      rgba(0, 0, 0, 0) 100%),
+    linear-gradient(
+      to top right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) calc(50% - 1px),
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0) calc(50% + 1px),
+      rgba(0, 0, 0, 0) 100%);
+  transition: 0.3s;
+}
+.float-sidebar-visible {
+  display: flex;
+}
+.float-sidebar-visible .float-sidebar-mask,
+.float-sidebar-visible .float-sidebar-icon-close-wrapper {
+  animation: fadeIn var(--animation-config);
+}
+.float-sidebar-visible .float-sidebar-container {
+  animation: translateToRight var(--animation-config);
+}
+.float-sidebar-hidding .float-sidebar-mask,
+.float-sidebar-hidding .float-sidebar-icon-close-wrapper {
+  animation: fadeOut var(--animation-config);
+}
+.float-sidebar-hidding .float-sidebar-container {
+  animation: translateToLeft var(--animation-config);
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes translateToRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes translateToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,3 +1,4 @@
 import Swiper from "swiper";
+import "./customHTMLElement";
 
-window.CustomSwiper = Swiper
+window.Swiper = Swiper

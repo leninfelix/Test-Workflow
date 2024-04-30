@@ -1,0 +1,33 @@
+{%- capture attributes -%}
+  class="icon icon-{{ icon | handle }} {{ class }}" role="presentation" focusable="false"
+{%- endcapture -%}
+
+{% case icon %}
+  {%- comment -%} Theme {%- endcomment -%}
+    {% when "hamburguer" %}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-5 -7 24 24"> <path fill="currentColor" d="M1 0h6a1 1 0 1 1 0 2H1a1 1 0 1 1 0-2zm0 8h8a1 1 0 1 1 0 2H1a1 1 0 1 1 0-2zm0-4h12a1 1 0 0 1 0 2H1a1 1 0 1 1 0-2z"/> </svg>
+
+    {% when "close" %}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-6 -6 24 24"> <path fill="currentColor" d="m7.314 5.9l3.535-3.536A1 1 0 1 0 9.435.95L5.899 4.485L2.364.95A1 1 0 1 0 .95 2.364l3.535 3.535L.95 9.435a1 1 0 1 0 1.414 1.414l3.535-3.535l3.536 3.535a1 1 0 1 0 1.414-1.414L7.314 5.899z"/> </svg>
+
+    {% when "account" %}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-2 -2 24 24"> <path fill="currentColor" d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10s-4.477 10-10 10zm0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16zm0-14a4 4 0 0 1 4 4v2a4 4 0 1 1-8 0V8a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v2a2 2 0 1 0 4 0V8a2 2 0 0 0-2-2zM5.91 16.876a8.033 8.033 0 0 1-1.58-1.232a5.57 5.57 0 0 1 2.204-1.574a1 1 0 1 1 .733 1.86c-.532.21-.993.538-1.358.946zm8.144.022a3.652 3.652 0 0 0-1.41-.964a1 1 0 1 1 .712-1.868a5.65 5.65 0 0 1 2.284 1.607a8.032 8.032 0 0 1-1.586 1.225z"/> </svg>
+
+    {% when "cart" %}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-3 -4 24 24"> <path fill="currentColor" d="M7 16a2 2 0 1 1 0-4a2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4a2 2 0 0 1 0 4zM.962 1.923A.962.962 0 0 1 .962 0h1.151c.902 0 1.682.626 1.878 1.506l1.253 5.642c.196.88.976 1.506 1.878 1.506h7.512l1.442-5.77H6.731a.962.962 0 0 1 0-1.922h9.345a1.923 1.923 0 0 1 1.866 2.39L16.5 9.12a1.923 1.923 0 0 1-1.866 1.457H7.122a3.846 3.846 0 0 1-3.755-3.012L2.113 1.923H.962z"/> </svg>
+
+    {% when "search" %}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-2.5 -2.5 24 24"> <path fill="currentColor" d="M8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12zm6.32-1.094l3.58 3.58a1 1 0 1 1-1.415 1.413l-3.58-3.58a8 8 0 1 1 1.414-1.414z"/> </svg>
+    
+    {%- when 'error' -%}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"> <path fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Zm1 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z"/> </svg>
+
+    {%- when 'warning' -%}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"> <path fill="currentColor" d="M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z"/> </svg>
+
+    {%- when 'success' -%}
+      <svg {{ attributes | strip }} xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 1024 1024"> <path fill="currentColor" d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896zm-55.808 536.384l-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336L456.192 600.384z"/> </svg>
+
+  
+    {%- comment -%} Social Media {%- endcomment -%}
+{% endcase %}

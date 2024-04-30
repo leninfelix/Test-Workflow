@@ -7,7 +7,7 @@ import postcss from 'esbuild-postcss'
 
 const onProduction = process.env.NODE_ENV === "production"
 const srcPath = './zrc';
-const outputDestination = './dist';
+const outputDestination = './assets';
 
 /* ============================================= */
 // Utils

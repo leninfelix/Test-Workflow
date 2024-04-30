@@ -1,0 +1,63 @@
+{% liquid
+  assign icons = "hamburguer, close, account, cart, search, error, warning, success" | split: ", "  
+%}
+
+<style>
+  .presentation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .presentation-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;;
+  }
+
+  svg {
+    width: auto;
+    height: 40px;
+  }
+</style>
+
+<div class="presentation-block presentation-icons">
+  {% for icon_name in icons %}
+    {% render "icon" with icon_name %}
+  {% endfor %}
+</div>
+
+<div class="presentation-block presentation-buttons">
+  <button class="button button-primary" type="button">Button Primary</button>
+  <button class="button button-secondary" type="button">Button Secondary</button>
+  <button class="button button-tertiary" type="button">Button Tertiary</button>
+</div>
+
+<div class="presentation-block presentation-products">
+  {% render "product-card", product: section.settings.product_1 %}
+  {% render "product-card", product: section.settings.product_2 %}
+</div>
+
+{% schema %}
+{
+  "name": "Presentation",
+  "class": "presentation",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    }
+  ]
+}
+{% endschema %}

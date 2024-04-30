@@ -1,0 +1,27 @@
+<float-sidebar class="component-float-sidebar {{ class }}" data-animation-duration="0.2">
+  <div class="float-sidebar-button-wrapper">
+    <div class="float-sidebar-button" data-sidebar-button-open>{{ button }}</div>
+  </div>
+
+  <div class="float-sidebar" data-sidebar>
+    <div class="float-sidebar-mask" data-sidebar-mask></div>
+
+    <div class="float-sidebar-container">
+      
+      <div class="float-sidebar-container-int">
+
+        <div class="float-sidebar-icon-close-wrapper" data-sidebar-button-close>
+          <span class="float-sidebar-icon-close"></span>
+        </div>
+
+        <div class="float-sidebar-content">
+          <div class="float-sidebar-content-scrolleable">
+            {{ content }}
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</float-sidebar>

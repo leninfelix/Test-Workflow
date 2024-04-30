@@ -1,0 +1,63 @@
+{%- comment -%}
+********************************************
+Section Header
+********************************************
+This component renders a section header
+
+Variables:
+
+Content
+* subheading: pretext for introduction
+  type: text
+* heading: heading of section
+  type: text
+* content: content of text
+  type: inline_richtext | richtext
+* link_text: text of the link
+  type: text
+* link_url: link URL
+  type: url
+
+Colors:
+* subheading_color: the optional gradient to use for the heading
+  type: color
+* heading_color: the optional gradient to use for the heading
+  type: color
+* heading_gradient: the optional gradient to use for the heading
+  type: gradient
+* content_color: the optional gradient to use for the heading
+  type: color
+
+Layout
+* layout: can be "start", "center" or "end" (default to start, which is a left alignment on LTR environment)
+* text_alignment: can be "start", "center" or "end" (default to start, which is a left alignment on LTR environment)
+  type: buttons
+{%- endcomment -%}
+
+{%- capture attributes -%}
+  class="section-header {{ class }}"
+{%- endcapture -%}
+
+<section-header {{- attributes -}}>
+  {% comment %} Subheading {% endcomment %}
+    <div class="section-header-subheading-wrapper">
+      <p class="section-header-subheading">{{ subheading }}</p>
+    </div>
+
+  {% comment %} Title {% endcomment %}
+    <div class="section-header-heading-wrapper">
+      <h2 class="section-header-heading">{{ heading }}</h2>
+    </div>
+
+  {% comment %} Text {% endcomment %}
+    <div class="section-header-text-wrapper">
+      <div class="section-header-text">{{ text }}</div>
+    </div>
+
+  {% comment %} Button {% endcomment %}
+    <a href="{{ link_url }}" class="text-with-icon group">
+      <span class="reversed-link">{{- link_text | escape -}}</span>
+      <span class="circle-chevron">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</span>
+    </a>
+
+</section-header>
