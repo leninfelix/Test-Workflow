@@ -1,0 +1,78 @@
+{%- comment -%}
+********************************************
+Section Footer
+********************************************
+This component renders a section footer
+
+Variables:
+
+Content
+* content: content of text
+  type: inline_richtext | richtext
+* link_text: text of the link
+  type: text
+* link_url: link URL
+  type: url
+
+Colors:
+* content_color: the optional gradient to use for the heading
+  type: color
+
+Layout
+* layout: Select layout for footer (stacked / by sides)
+  type: select
+* alignment: can be "start", "center" or "end" (default to start, just with layout: stacked)
+  type: select
+{%- endcomment -%}
+
+{% liquid
+  assign button_exists = false
+
+  if button_label != blank and button_link != blank
+    assign button_exists = true
+  endif
+%}
+
+{%- capture attributes -%}
+  class="section-footer {{ class }}"
+  data-layout="{{ layout }}"
+  data-alignment="{{ alignment }}"
+{%- endcapture -%}
+
+<style>
+  .text-custom-color {
+    color: var(--color);
+  }
+</style>
+
+<footer {{ attributes }}>
+  {% if layout == "two_columns"  %}
+    <div class="section-footer-left">
+  {% endif %}
+
+    {% comment %} content {% endcomment %}
+      {% if content != blank %}
+        <div class="section-footer-content-wrapper">
+          <div {% render "set-text-color", class:"section-footer-content rte", text_color: content_color %}>{{- content -}}</div>
+        </div>
+      {% endif %}
+  
+  {% if layout == "two_columns"  %}
+    </div>
+    <div class="section-footer-right">
+  {% endif %}
+
+    {% comment %} Button {% endcomment %}
+      {% if button_exists %}
+        <div class="section-footer-button-wrapper">
+          <a href="{{- button_link -}}" class="section-footer-button button button-{{ button_style }}">
+            {{- button_label | escape -}}
+          </a>
+        </div>
+      {% endif %}
+  
+  {% if layout == "two_columns"  %}
+    </div>
+  {% endif %}
+
+</footer>

@@ -1,0 +1,310 @@
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+VARIABLES
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+  {% liquid
+    
+  %}
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+LIQUID
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+  <div {% render 'section-properties' %}>
+    {%- render 'section-header',
+      class: "x-header"
+      subheading: section.settings.header_subheading
+      heading: section.settings.title
+      content: section.settings.header_content
+      button_label: section.settings.header_button_label
+      button_link: section.settings.header_button_link
+      button_style: section.settings.header_button_style
+
+      subheading_color: section.settings.header_subheading_color
+      heading_color: section.settings.header_heading_color
+      heading_gradient: section.settings.header_heading_gradient
+      content_color: section.settings.header_content_color
+
+      layout: section.settings.header_layout
+      alignment: section.settings.header_alignment
+    -%}
+
+    {%- render 'section-footer',
+      class: "x-footer"
+      content: section.settings.footer_content
+      button_label: section.settings.footer_button_label
+      button_link: section.settings.footer_button_link
+      button_style: section.settings.footer_button_style
+      content_color: section.settings.footer_content_color
+      layout: section.settings.footer_layout
+      alignment: section.settings.footer_alignment
+    -%}
+  </div>
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+SCHEMA
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "XX XX",
+  "class": "xx-xx",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"]
+  },
+  "settings": [
+    // Header - Layout
+      {
+        "type": "header",
+        "content": "Encabezado - Diseño"
+      },
+      {
+        "type": "select",
+        "id": "header_layout",
+        "label": "Diseño",
+        "options": [
+          {
+            "value": "stacked",
+            "label": "Apilados"
+          },
+          {
+            "value": "two_columns",
+            "label": "Dos columnas"
+          }
+        ],
+        "default": "stacked"
+      },
+      {
+        "type": "select",
+        "id": "header_alignment",
+        "label": "Alineacion de textos",
+        "info": "La Alineacion solo aplica en el diseño: Apilados",
+        "options": [
+          {
+            "value": "left",
+            "label": "Izquierda"
+          },
+          {
+            "value": "center",
+            "label": "Centro"
+          },
+          {
+            "value": "right",
+            "label": "Derecha"
+          }
+        ],
+        "default": "left"
+      },
+
+    // Header - Content
+      {
+        "type": "header",
+        "content": "Encabezado - Contenido"
+      },
+      {
+        "type": "text",
+        "id": "header_subheading",
+        "label": "Subtitulo"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Titulo"
+      },
+      {
+        "type": "richtext",
+        "id": "header_content",
+        "label": "Content"
+      },
+
+    // Header - Button
+      {
+        "type": "header",
+        "content": "Encabezado - Boton"
+      },
+      {
+        "type": "text",
+        "id": "header_button_label",
+        "label": "Texto"
+      },
+      {
+        "type": "url",
+        "id": "header_button_link",
+        "label": "Enlace"
+      },
+      {
+        "type": "select",
+        "id": "header_button_style",
+        "label": "Diseño de boton",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primario"
+          },
+          {
+            "value": "secondary",
+            "label": "Secundario"
+          },
+          {
+            "value": "tertiary",
+            "label": "Terciario"
+          }
+        ],
+        "default": "primary"
+      },
+    
+    // Header - Colors
+      {
+        "type": "header",
+        "content": "Encabezado - Colores"
+      },
+      {
+        "type": "color",
+        "id": "header_subheading_color",
+        "label": "Subtitulo Color"
+      },
+      {
+        "type": "color",
+        "id": "header_heading_color",
+        "label": "Titulo Color"
+      },
+      {
+        "type": "color_background",
+        "id": "header_heading_gradient",
+        "label": "Titulo gradiente"
+      },
+      {
+        "type": "color",
+        "id": "header_content_color",
+        "label": "Contenido Color"
+      },
+
+    // Footer - Layout
+      {
+        "type": "header",
+        "content": "Footer - Diseño"
+      },
+      {
+        "type": "select",
+        "id": "footer_layout",
+        "label": "Diseño",
+        "options": [
+          {
+            "value": "stacked",
+            "label": "Apilados"
+          },
+          {
+            "value": "two_columns",
+            "label": "Dos columnas"
+          }
+        ],
+        "default": "stacked"
+      },
+      {
+        "type": "select",
+        "id": "footer_alignment",
+        "label": "Alineacion de textos",
+        "info": "La Alineacion solo aplica en el diseño: Apilados",
+        "options": [
+          {
+            "value": "left",
+            "label": "Izquierda"
+          },
+          {
+            "value": "center",
+            "label": "Centro"
+          },
+          {
+            "value": "right",
+            "label": "Derecha"
+          }
+        ],
+        "default": "left"
+      },
+
+    // Footer - Content
+      {
+        "type": "header",
+        "content": "Footer - Contenido"
+      },
+      {
+        "type": "richtext",
+        "id": "footer_content",
+        "label": "Contenido"
+      },
+
+    // Footer - Button
+      {
+        "type": "header",
+        "content": "Footer - Boton"
+      },
+      {
+        "type": "text",
+        "id": "footer_button_label",
+        "label": "Texto"
+      },
+      {
+        "type": "url",
+        "id": "footer_button_link",
+        "label": "Enlace"
+      },
+      {
+        "type": "select",
+        "id": "footer_button_style",
+        "label": "Diseño de boton",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primario"
+          },
+          {
+            "value": "secondary",
+            "label": "Secundario"
+          },
+          {
+            "value": "tertiary",
+            "label": "Terciario"
+          }
+        ],
+        "default": "primary"
+      },
+
+    // Footer - Colors
+      {
+        "type": "header",
+        "content": "Footer - Colores"
+      },
+      {
+        "type": "color",
+        "id": "footer_content_color",
+        "label": "Color de contenido"
+      }
+  ],
+  "blocks": [
+    // {
+    //   "type": "header_text",
+    //   "name": "header Texto",
+    //   "limit": 2,
+    //   "settings": [
+    //     {
+    //       "type": "text",
+    //       "id": "text",
+    //       "label": "text"
+    //     }
+    //   ]
+    // }
+  ],
+  "presets": [
+    {
+      "name": "XX XX"
+    }
+  ]
+}
+{% endschema %}

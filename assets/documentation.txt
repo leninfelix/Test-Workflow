@@ -1,0 +1,7 @@
+Stylelint
+Requerimientos:
+  - VsCode Plugin Oficial Stylelint
+  - NPM Packages
+    - Stylelint - 15.11.0
+    - @shopify/stylelint-plugin
+    - stylelint-order

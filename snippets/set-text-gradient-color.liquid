@@ -1,0 +1,45 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+Set Gradient Color
+----------------------------------------------------------------------------------------------------------------------
+
+Genera el color gradiente para el texto colocado
+
+* class: class for element
+  type: string
+* text_gradient: color gradient value
+  type: color_background
+* text_color: color value
+  type: color
+* content: content text
+  type: Any
+
+{%- endcomment -%}
+
+{%- liquid
+  capture class
+    if text_gradient != blank
+      echo 'text-gradient ' | append: class
+    elsif text_color != blank and text_color != 'rgba(0,0,0,0)'
+      echo 'text-custom-color ' | append: class
+    endif
+  endcapture
+
+  capture style
+    if text_gradient != blank
+      echo '--gradient: ' | append: text_gradient | append: ';'
+    elsif text_color != blank and text_color != 'rgba(0,0,0,0)'
+      echo '--color: ' | append: text_color | append: ';'
+    endif
+  endcapture
+-%}
+
+{%- capture text_content -%}
+  {{- content | strip | escape -}}
+{%- endcapture -%}
+
+{% if class != blank %}
+  <span class="{{ class }}" style="{{ style }}">{{- text_content -}}</span>
+{% else %}
+  {{- text_content -}}
+{% endif %}

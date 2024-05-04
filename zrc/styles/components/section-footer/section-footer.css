@@ -1,0 +1,28 @@
+.section-footer {
+  --gap: 30px;
+  gap: var(--gap);
+  width: 100%;
+
+  &[data-layout="stacked"] {
+    display: flex;
+    flex-direction: column;
+
+    &[data-alignment="left"] {
+      text-align: left;
+    }
+
+    &[data-alignment="center"] {
+      text-align: center;
+    }
+
+    &[data-alignment="right"] {
+      text-align: right;
+    }
+  }
+
+  &[data-layout="two_columns"] {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr max-content;
+  }
+}

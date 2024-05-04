@@ -29,35 +29,89 @@ Colors:
   type: color
 
 Layout
-* layout: can be "start", "center" or "end" (default to start, which is a left alignment on LTR environment)
-* text_alignment: can be "start", "center" or "end" (default to start, which is a left alignment on LTR environment)
-  type: buttons
+* layout: Select layout for header (stacked / by sides)
+  type: select
+* alignment: can be "start", "center" or "end" (default to start, just with layout: stacked)
+  type: select
 {%- endcomment -%}
+
+{% liquid
+  assign button_exists = false
+
+  if button_label != blank and button_link != blank
+    assign button_exists = true
+  endif
+
+%}
 
 {%- capture attributes -%}
   class="section-header {{ class }}"
+  data-layout="{{ layout }}"
+  data-alignment="{{ alignment }}"
 {%- endcapture -%}
 
-<section-header {{- attributes -}}>
-  {% comment %} Subheading {% endcomment %}
-    <div class="section-header-subheading-wrapper">
-      <p class="section-header-subheading">{{ subheading }}</p>
+<style>
+  #shopify-section-{{ section.id }} {
+    
+  }
+
+  .text-gradient {
+    background-image: var(--gradient);
+    color: #0000;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-custom-color {
+    color: var(--color);
+  }
+</style>
+
+<header {{ attributes }}>
+
+  {% if layout == "two_columns"  %}
+    <div class="section-header-left">
+  {% endif %}
+  
+    {% comment %} Subheading {% endcomment %}
+      <div class="section-header-subheading-wrapper">
+        <p {% render "set-text-color", class:"section-header-subheading", text_color: subheading_color %}>{{- subheading -}}</p>
+      </div>
+
+    {% comment %} Title {% endcomment %}
+      <div class="section-header-heading-wrapper">
+        <h2>
+          {% render "set-text-gradient-color", 
+            class:"section-header-heading", 
+            content: heading, 
+            text_color: heading_color, 
+            text_gradient: heading_gradient 
+          %}
+        </h2>
+      </div>
+
+    {% comment %} content {% endcomment %}
+      <div class="section-header-content-wrapper">
+        <div {% render "set-text-color", class:"section-header-content rte", text_color: content_color %}>{{- content -}}</div>
+      </div>
+
+  
+  {% if layout == "two_columns"  %}
     </div>
+    <div class="section-header-right">
+  {% endif %}
 
-  {% comment %} Title {% endcomment %}
-    <div class="section-header-heading-wrapper">
-      <h2 class="section-header-heading">{{ heading }}</h2>
+    {% comment %} Button {% endcomment %}
+      {% if button_exists %}
+        <div class="section-header-button-wrapper">
+          <a href="{{- button_link -}}" class="section-header-button button button-{{ button_style }}">{{- button_label | escape -}}</a>
+        </div>
+      {% endif %}
+
+  {% if layout == "two_columns"  %}
     </div>
+  {% endif %}
 
-  {% comment %} Text {% endcomment %}
-    <div class="section-header-text-wrapper">
-      <div class="section-header-text">{{ text }}</div>
-    </div>
-
-  {% comment %} Button {% endcomment %}
-    <a href="{{ link_url }}" class="text-with-icon group">
-      <span class="reversed-link">{{- link_text | escape -}}</span>
-      <span class="circle-chevron">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</span>
-    </a>
-
-</section-header>
+</header>

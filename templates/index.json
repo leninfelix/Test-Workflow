@@ -14,7 +14,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -27,49 +27,45 @@
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
+        "image_overlay_opacity": 30,
+        "image_height": "adapt",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
+        "image_behavior": "zoom-in",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "x_fQNc7e": {
+      "type": "x",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "header_layout": "stacked",
+        "header_alignment": "left",
+        "header_subheading": "Subtitulo",
+        "title": "Titulo",
+        "header_content": "<p>Content<\/p>",
+        "header_button_label": "Encabezado - Boton",
+        "header_button_link": "shopify:\/\/products\/amarillo",
+        "header_button_style": "secondary",
+        "header_subheading_color": "rgba(0,0,0,0)",
+        "header_heading_color": "#dd1d1d",
+        "header_heading_gradient": "linear-gradient(211deg, rgba(21, 209, 252, 1) 47%, rgba(187, 48, 254, 1) 55%)",
+        "header_content_color": "#05ff00",
+        "footer_layout": "stacked",
+        "footer_alignment": "center",
+        "footer_content": "<p><strong>Lorem<\/strong> <em>ipsum<\/em> dolor sit amet, consectetur <a href=\"\/pages\/contact\" target=\"_blank\" title=\"Contact\">adipiscing<\/a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <\/p><p><\/p><ul><li>1<\/li><li>2<\/li><li>3<\/li><\/ul><p><\/p><ol><li>Uno<\/li><li>Dos<\/li><li>Tres<\/li><\/ol><p><\/p><h3>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <\/h3><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+        "footer_button_label": "Footer - Boton",
+        "footer_button_link": "shopify:\/\/pages\/contact",
+        "footer_button_style": "tertiary",
+        "footer_content_color": "#cb00ff"
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "x_fQNc7e"
   ]
 }
