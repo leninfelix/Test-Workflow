@@ -641,6 +641,11 @@
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
+            
+            {% if block.type contains "property_" %}  
+              {% render 'block-property', block: block, product_form_id: product_form_id %}
+            {% endif %}
+
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
@@ -754,6 +759,192 @@
     {
       "type": "@app"
     },
+    // Properties
+    {
+      "type": "property_file",
+      "name": "Propiedad - Archivo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Nombre",
+          "info": "Este nombre es el que aparecera en las propiedades del producto en carrito y en la orden."
+        },
+        {
+          "type": "text",
+          "id": "property_placeholder",
+          "label": "Placeholder"
+        },
+        {
+          "type": "select",
+          "id": "property_file_upload_type",
+          "default": "all",
+          "label": "Tipo de archivos permitidos",
+          "options": [
+            {
+              "value": "all",
+              "label": "Todos los archivos"
+            },
+            {
+              "value": "image",
+              "label": "Solo imagenes"
+            },
+            {
+              "value": "video",
+              "label": "Solo archivos de video"
+            },
+            {
+              "value": "audio",
+              "label": "Solo archivos de audio"
+            },
+            {
+              "value": "pdf",
+              "label": "Solo archivos PDF"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "property_multifile_upload",
+          "default": false,
+          "label": "Subir Multiples archivos"
+        },
+        {
+          "type": "checkbox",
+          "id": "property_required",
+          "default": false,
+          "label": "Campo Obligatorio"
+        }
+      ]
+    },
+    {
+      "type": "property_text",
+      "name": "Propiedad - Texto",
+      "settings": [
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Nombre",
+          "info": "Este nombre es el que aparecera en las propiedades del producto en carrito y en la orden."
+        },
+        {
+          "type": "text",
+          "id": "property_label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "property_placeholder",
+          "label": "Placeholder"
+        },
+        {
+          "type": "checkbox",
+          "id": "property_required",
+          "default": false,
+          "label": "Campo Obligatorio"
+        }
+      ]
+    },
+    {
+      "type": "property_number",
+      "name": "Propiedad - Numero",
+      "settings": [
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Nombre",
+          "info": "Este nombre es el que aparecera en las propiedades del producto en carrito y en la orden."
+        },
+        {
+          "type": "text",
+          "id": "property_label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "property_placeholder",
+          "label": "Placeholder"
+        },
+        {
+          "type": "checkbox",
+          "id": "property_required",
+          "default": false,
+          "label": "Campo Obligatorio"
+        }
+      ]
+    },
+    {
+      "type": "property_checkbox",
+      "name": "Propiedad - Checkbox",
+      "settings": [
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Nombre",
+          "info": "Este nombre es el que aparecera en las propiedades del producto en carrito y en la orden."
+        },
+        {
+          "type": "text",
+          "id": "property_label",
+          "label": "Label"
+        },
+        {
+          "type": "checkbox",
+          "id": "property_required",
+          "default": false,
+          "label": "Campo Obligatorio"
+        }
+      ]
+    },
+    {
+      "type": "property_color",
+      "name": "Propiedad - Color",
+      "settings": [
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Nombre",
+          "info": "Este nombre es el que aparecera en las propiedades del producto en carrito y en la orden."
+        },
+        {
+          "type": "text",
+          "id": "property_label",
+          "label": "Label"
+        },
+        {
+          "type": "checkbox",
+          "id": "property_required",
+          "default": false,
+          "label": "Campo Obligatorio"
+        }
+      ]
+    },
+    {
+      "type": "property_date",
+      "name": "Propiedad - Fecha",
+      "settings": [
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Nombre",
+          "info": "Este nombre es el que aparecera en las propiedades del producto en carrito y en la orden."
+        },
+        {
+          "type": "text",
+          "id": "property_label",
+          "label": "Label"
+        },
+        {
+          "type": "checkbox",
+          "id": "property_required",
+          "default": false,
+          "label": "Campo Obligatorio"
+        }
+      ]
+    },
+
+
+    // otras cosas
     {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",

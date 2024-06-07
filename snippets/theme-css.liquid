@@ -216,7 +216,9 @@
   {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
 {%- endif -%}
 
+{{ 'variables.css' | asset_url | stylesheet_tag }}
 {{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'theme.css' | asset_url | stylesheet_tag }}
 {{ 'component-section-header.css' | asset_url | stylesheet_tag }}
 {{ 'component-section-footer.css' | asset_url | stylesheet_tag }}
 

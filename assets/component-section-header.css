@@ -1,0 +1,24 @@
+/* zrc/styles/components/section-header/index.css */
+.section-header {
+  --gap: 30px;
+  gap: var(--gap);
+  width: 100%;
+}
+.section-header[data-layout=stacked] {
+  display: flex;
+  flex-direction: column;
+}
+.section-header[data-layout=stacked][data-alignment=left] {
+  text-align: left;
+}
+.section-header[data-layout=stacked][data-alignment=center] {
+  text-align: center;
+}
+.section-header[data-layout=stacked][data-alignment=right] {
+  text-align: right;
+}
+.section-header[data-layout=two_columns] {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr max-content;
+}

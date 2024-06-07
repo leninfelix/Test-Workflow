@@ -35,7 +35,7 @@ Genera el color gradiente para el texto colocado
 -%}
 
 {%- capture text_content -%}
-  {{- content | strip | escape -}}
+  {{- content | strip -}}
 {%- endcapture -%}
 
 {% if class != blank %}

@@ -10,7 +10,7 @@ Content
 * subheading: pretext for introduction
   type: text
 * heading: heading of section
-  type: text
+  type: inline_text, text
 * content: content of text
   type: inline_richtext | richtext
 * link_text: text of the link
@@ -50,24 +50,11 @@ Layout
   data-alignment="{{ alignment }}"
 {%- endcapture -%}
 
-<style>
+{% style %}
   #shopify-section-{{ section.id }} {
     
   }
-
-  .text-gradient {
-    background-image: var(--gradient);
-    color: #0000;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-
-  .text-custom-color {
-    color: var(--color);
-  }
-</style>
+{% endstyle %}
 
 <header {{ attributes }}>
 
@@ -97,7 +84,6 @@ Layout
         <div {% render "set-text-color", class:"section-header-content rte", text_color: content_color %}>{{- content -}}</div>
       </div>
 
-  
   {% if layout == "two_columns"  %}
     </div>
     <div class="section-header-right">

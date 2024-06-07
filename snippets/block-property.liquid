@@ -1,0 +1,160 @@
+{% liquid
+  assign type = block.type
+  assign name = block.settings.property_name
+  assign label = block.settings.property_label
+  assign placeholder = block.settings.property_placeholder
+  assign required = block.settings.property_required
+
+  # Radio
+  # agregar configuracion para opciones multiples
+
+  # Numero
+  # agregar configuracion mara maximo y minimo, cambiar placeholder
+
+
+  # Block type File
+  assign file_upload_type = block.settings.property_file_upload_type
+  assign multifile_upload = block.settings.property_multifile_upload
+
+  case file_upload_type
+    when "audio"
+      assign accept_files = "audio/*"
+    when "video"
+      assign accept_files = "video/*"
+    when "image"
+      assign accept_files = "image/*"
+    when "pdf"
+      assign accept_files = ".pdf"
+  endcase
+%}
+
+{%- capture attributes_input -%}
+  name="properties[{{ name }}]"
+  form="{{ product_form_id }}"
+  {% if required %}required{% endif %}
+
+  {%- if type == "property_file" -%}
+    {% if multifile_upload %}multiple{% endif %}
+    accept="{{- accept_files -}}" 
+  {%- endif -%}
+
+  {%- if type == "property_text" or type == "property_number" -%}
+    {% if placeholder != blank %}placeholder="{{ placeholder }}"{% endif %}
+  {%- endif -%}
+{%- endcapture %}
+
+<style>
+  .block-property {
+    --property-icon-size: 18px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+  }
+  
+  /* File */
+  .block-property-file {
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  .block-property-file img,
+  .block-property-icon {
+    max-width: var(--property-icon-size);
+    width: 100%;
+    height: auto;
+  }
+
+  /* Text */
+  .block-property-date,
+  .block-property-number,
+  .block-property-text {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+</style>
+
+{% case type %}
+  {% when "property_file" %}
+    <label class="block-property block-property-file">
+      <input id="{{ block.id }}" hidden type="file" {{ attributes_input }}>
+      <span class="block-property-placeholder" data-placeholder="{{ placeholder }}">{{ placeholder }}</span>
+      <svg class="block-property-icon" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.728 3H7.5a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h9a2.25 2.25 0 0 0 2.25-2.25V12M9.728 3C10.971 3 12 4.007 12 5.25V7.5a2.25 2.25 0 0 0 2.25 2.25h2.25A2.25 2.25 0 0 1 18.75 12M9.728 3c3.69 0 9.022 5.36 9.022 9"/></svg>
+    </label>
+  
+  {% when "property_text" %}
+    <div class="block-property block-property-text">
+      <label for="{{ block.id }}" class="block-property-label">{{ label }}</label>
+      <input id="{{ block.id }}" type="text" {{ attributes_input }}>
+    </div>
+
+  {% when "property_checkbox" %}
+    <div class="block-property block-property-checkbox">
+      <input type="hidden" value="no checkeado" {{ attributes_input }}>
+      <input id="{{ block.id }}" type="checkbox" value="checkeado" {{ attributes_input }}>
+      <label class="block-property-label" for="{{ block.id }}">{{ label }}</label>
+    </div>
+
+  {% when "property_color" %}
+    <div class="block-property block-property-color">
+      <input id="{{ block.id }}" type="color" {{ attributes_input }}>
+      <label class="block-property-label" for="{{ block.id }}">{{ label }}</label>
+    </div>
+  
+  {% when "property_date" %}
+    <div class="block-property block-property-date">
+      <label class="block-property-label" for="{{ block.id }}">{{ label }}</label>
+      <input id="{{ block.id }}" type="date" {{ attributes_input }}>
+    </div>
+
+  {% when "property_number" %}
+    <div class="block-property block-property-number">
+      <label for="{{ block.id }}" class="block-property-label">{{ label }}</label>
+      <input id="{{ block.id }}" type="number" {{ attributes_input }}>
+    </div>
+    
+  {% when "property_radio" %}
+    <input type="radio" value="radio-1" checked name="properties[Radio]">
+    <input type="radio" value="radio-2" name="properties[Radio]">
+    
+{% endcase %}
+
+{% comment %} scripts {% endcomment %}
+{% case type %}
+  {% when "property_file" %}
+    <script>
+      const $propertyFilesInputs = document.querySelectorAll(".block-property-file input")
+
+      $propertyFilesInputs.forEach($inputFile => {
+        const $parentContainer = $inputFile.parentNode
+
+        $inputFile.addEventListener("cancel", () => {
+          $inputFile.nextElementSibling.textContent = $inputFile.nextElementSibling.dataset.placeholder
+          $parentContainer.querySelector("svg").classList.remove("hidden")
+          $parentContainer.querySelector("img")?.remove()
+        });
+
+        $inputFile.addEventListener("change", () => {
+          if ($inputFile.files.length == 1) {
+            const file = $inputFile.files[0]
+            $inputFile.nextElementSibling.innerHTML = `File selected: <strong>${file.name}</strong>`
+            $parentContainer.querySelector("svg").classList.add("hidden")
+            $parentContainer.querySelector("img")?.remove()
+            $parentContainer.insertAdjacentHTML("beforeend", `
+              <img class="block-property-image-file" loading="lazy" src="${URL.createObjectURL(file)}" alt="${file.name}" />
+            `)
+          }
+        });
+      })
+    </script>
+
+{% endcase %}

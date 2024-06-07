@@ -3,33 +3,56 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
+        "property_file_VqU4Gd": {
+          "type": "property_file",
           "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
+            "property_name": "Archivo",
+            "property_placeholder": "Selecciona un archivo",
+            "property_file_upload_type": "image",
+            "property_multifile_upload": false,
+            "property_required": true
           }
         },
-        "title": {
-          "type": "title",
+        "property_text_fCkY6T": {
+          "type": "property_text",
           "settings": {
+            "property_name": "Name",
+            "property_label": "Label para el texto",
+            "property_placeholder": "texto de placeholder",
+            "property_required": true
           }
         },
-        "price": {
-          "type": "price",
+        "property_checkbox_g7RCVX": {
+          "type": "property_checkbox",
           "settings": {
+            "property_name": "Checbox HD",
+            "property_label": "Campo de checkbox",
+            "property_required": true
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
+        "property_color_Thkgin": {
+          "type": "property_color",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "property_name": "Color Relleno",
+            "property_label": "Color Relleno",
+            "property_required": false
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
+        "property_number_bxVbdt": {
+          "type": "property_number",
           "settings": {
+            "property_name": "Numero de Playera",
+            "property_label": "Ingresa tu numero favorito",
+            "property_placeholder": "awd",
+            "property_required": false
+          }
+        },
+        "property_date_bXQxL4": {
+          "type": "property_date",
+          "settings": {
+            "property_name": "Fecha",
+            "property_label": "Ingresa tu cumpleaños",
+            "property_required": false
           }
         },
         "buy_buttons": {
@@ -38,28 +61,16 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
-        "vendor",
-        "title",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "property_file_VqU4Gd",
+        "property_text_fCkY6T",
+        "property_checkbox_g7RCVX",
+        "property_color_Thkgin",
+        "property_number_bxVbdt",
+        "property_date_bXQxL4",
+        "buy_buttons"
       ],
       "settings": {
         "enable_sticky_info": true,

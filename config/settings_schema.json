@@ -4,8 +4,136 @@
     "theme_name": "Majesty",
     "theme_version": "1.0.0",
     "theme_author": "Lenin Felix",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "t:settings_schema.buttons.name",
+    "settings": [
+      // Button Primary
+      {
+        "type": "header",
+        "content": "Primary"
+      },
+      // Button sizes
+      {
+        "type": "range",
+        "id": "button_primary_width",
+        "label": "Width",
+        "min": 200,
+        "max": 400,
+        "step": 2,
+        "unit": "px",
+        "default": 220
+      },
+      {
+        "type": "range",
+        "id": "button_primary_height",
+        "label": "Height",
+        "min": 20,
+        "max": 70,
+        "step": 1,
+        "unit": "px",
+        "default": 45
+      },
+      // Button Colors
+      {
+        "type": "color",
+        "id": "button_primary_background",
+        "label": "Background",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_background_hover",
+        "label": "Background on hover",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_text_color",
+        "label": "Text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_text_color_hover",
+        "label": "Text on hover",
+        "default": "#000000"
+      },
+      // Button border
+      {
+        "type": "range",
+        "id": "button_primary_border_width",
+        "label": "Border Width",
+        "min": 0,
+        "max": 3,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "color",
+        "id": "button_primary_border_color",
+        "label": "Border color"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_border_color_hover",
+        "label": "Border color on hover"
+      },
+      {
+        "type": "range",
+        "id": "button_primary_border_radius",
+        "label": "Border Radius",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      },
+      // Button font
+      {
+        "type": "select",
+        "id": "button_primary_font_weight",
+        "label": "Peso de la tipografia",
+        "options": [
+          {
+            "value": "300",
+            "label": "300"
+          },
+          {
+            "value": "400",
+            "label": "400"
+          },
+          {
+            "value": "500",
+            "label": "500"
+          },
+          {
+            "value": "600",
+            "label": "600"
+          },
+          {
+            "value": "700",
+            "label": "700"
+          }
+        ],
+        "default": "400",
+        "info": "La tipografia del boton sera la misma que 'Body', dependera de la tipografia si soporta el peso seleccionado"
+      },
+      // Button padding
+      {
+        "type": "range",
+        "id": "button_primary_padding_x",
+        "label": "Padding horizontal",
+        "min": 10,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      }
+    ]
   },
   {
     "name": "t:settings_schema.logo.name",
@@ -220,89 +348,6 @@
         "default": "default",
         "label": "t:settings_schema.animations.settings.animations_hover_elements.label",
         "info": "t:settings_schema.animations.settings.animations_hover_elements.info"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.buttons.name",
-    "settings": [
-      {
-        "type": "header",
-        "content": "t:settings_schema.global.settings.header__border.content"
-      },
-      {
-        "type": "range",
-        "id": "buttons_border_thickness",
-        "min": 0,
-        "max": 12,
-        "step": 1,
-        "unit": "px",
-        "label": "t:settings_schema.global.settings.thickness.label",
-        "default": 1
-      },
-      {
-        "type": "range",
-        "id": "buttons_border_opacity",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "%",
-        "label": "t:settings_schema.global.settings.opacity.label",
-        "default": 100
-      },
-      {
-        "type": "range",
-        "id": "buttons_radius",
-        "min": 0,
-        "max": 40,
-        "step": 2,
-        "unit": "px",
-        "label": "t:settings_schema.global.settings.corner_radius.label",
-        "default": 0
-      },
-      {
-        "type": "header",
-        "content": "t:settings_schema.global.settings.header__shadow.content"
-      },
-      {
-        "type": "range",
-        "id": "buttons_shadow_opacity",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "%",
-        "label": "t:settings_schema.global.settings.opacity.label",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "buttons_shadow_horizontal_offset",
-        "min": -12,
-        "max": 12,
-        "step": 2,
-        "unit": "px",
-        "label": "t:settings_schema.global.settings.horizontal_offset.label",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "buttons_shadow_vertical_offset",
-        "min": -12,
-        "max": 12,
-        "step": 2,
-        "unit": "px",
-        "label": "t:settings_schema.global.settings.vertical_offset.label",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "buttons_shadow_blur",
-        "min": 0,
-        "max": 20,
-        "step": 5,
-        "unit": "px",
-        "label": "t:settings_schema.global.settings.blur.label",
-        "default": 0
       }
     ]
   },
